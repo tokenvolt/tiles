@@ -1,0 +1,17 @@
+@import "../bower_components/bootswatch-scss/cosmo/variables";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap/variables";
+@import "../bower_components/bootstrap-sass-official/assets/stylesheets/bootstrap";
+@import "../bower_components/bootswatch-scss/cosmo/bootswatch";
+
+@import "bootstrap-overrides";
+
+span.tile {
+  border: 2px solid #acacac;
+  border-radius: 5px;
+  float: left;
+}
+
+.board {
+  box-sizing: border-box;
+  background-color: #acacac;
+}

@@ -1,0 +1,19 @@
+{
+  "name": "tiles",
+  "version": "0.0.0",
+  "authors": [
+    "Alex Khrustalev <alexkhrust@gmail.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootswatch-scss": "~3.2.0",
+    "bootstrap": "~3.2.0"
+  }
+}
