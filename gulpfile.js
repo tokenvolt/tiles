@@ -28,7 +28,7 @@ gulp.task('clean', function() {
 
 gulp.task('styles', function() {
   gulp.src('app/styles/main.scss')
-    .pipe(sass())
+    .pipe(sass({bundleExec: true}))
     .pipe(gulp.dest(buildDir + '/styles'))
     .on('error', function (err) { console.log(err.message); })
     .pipe(connect.reload())
