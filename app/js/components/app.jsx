@@ -24,15 +24,18 @@ var App = React.createClass({
   },
 
   render: function() {
+    var styles = {
+      margin: '0 auto',
+      width: this.state.game.boardLength * this.state.game.tileLength
+    };
+
     return (
-      <div>
-        <Header name={this.props.headerName} />
+      <div style={styles}>
+        <Header headerName={this.props.headerName} />
         {this.props.activeRouteHandler({
                                          tiles: this.state.game.tiles,
                                          length: this.state.game.boardLength,
-                                         tileLength: this.state.game.tileLength,
-                                         flippedPair: this.state.game.flippedPair,
-                                         area: this.state.game.boardArea
+                                         tileLength: this.state.game.tileLength
                                       })}
       </div>
     )

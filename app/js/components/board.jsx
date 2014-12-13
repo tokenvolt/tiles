@@ -1,22 +1,38 @@
 /** @jsx React.DOM */
 
-var React           = require("react");
-var Fluxxor         = require('fluxxor');
-var FluxMixin       = Fluxxor.FluxMixin(React);
-var StoreWatchMixin = Fluxxor.StoreWatchMixin;
-var Tile            = require('./tile.jsx');
-var EmptyTile       = require('./empty_tile.jsx');
-var _               = require('lodash');
-var randomColor     = require('randomcolor');
+var React     = require("react");
+var Tile      = require('./tile.jsx');
+var EmptyTile = require('./empty_tile.jsx');
 
 var Board = React.createClass({
+  // board props
+  // {
+  //   length: Number, ANOTHER NAME!!!
+  //   tileLength: Number
+  // }
+
   render: function() {
     var styles = {
       width: this.props.length * this.props.tileLength,
-      height: this.props.length * this.props.tileLength,
+      height: this.props.length * this.props.tileLength
     };
 
-    var tiles = this.props.tiles.map(function(tile) {
+    // tile props
+    // {
+    //   selected: Boolean,
+    //   dismissed: Boolean,
+    //   color: String
+    // }
+
+    if (this.props.tiles.length == 0) {
+      console.log('sss');
+      var board =
+        <button>
+          Restart
+        </button>
+    }
+
+    var board = this.props.tiles.map(function(tile) {
       if (tile.dismissed) {
         return(<EmptyTile side={this.props.tileLength}/>)
       } else {
@@ -28,7 +44,7 @@ var Board = React.createClass({
 
     return (
       <div className="board" style={styles}>
-        {tiles}
+        {board}
       </div>
     )
   }

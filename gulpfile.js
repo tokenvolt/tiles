@@ -54,6 +54,7 @@ gulp.task('js', function() {
       extensions: ['.jsx'],
       debug: config.debug
     }))
+    .pipe(uglify())
     .pipe(gulp.dest(buildDir + '/js'))
     .pipe(connect.reload())
 });
@@ -85,4 +86,8 @@ gulp.task('default', ['lint',
 );
 
 // build task
-gulp.task('build');
+gulp.task('build', ['styles',
+                    'js',
+                    'copy-bower-components',
+                    'copy-index']
+);

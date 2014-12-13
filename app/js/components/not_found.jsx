@@ -9,7 +9,7 @@ var NotFound = React.createClass({
 
   render: function() {
     return (
-      <p className="nothing-found">{this.props.message}</p>
+      <div className="nothing-found">{this.props.message}</div>
     )
   }
 });

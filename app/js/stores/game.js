@@ -5,18 +5,22 @@ var randomColor     = require('randomcolor');
 
 module.exports = Fluxxor.createStore({
   initialize: function(options) {
-    this.boardLength = 6;
-    this.tileLength  = 125;
+    this.boardLength = 2;
+    this.tileLength  = 120;
     this.area        = this.boardLength * this.boardLength;
     this.flippedPair = [];
+    this.finished    = false;
 
-    var colorPalette = randomColor({ count: this.area / 2 });
-    var colors       = _.shuffle(colorPalette.concat(colorPalette));
-
-    this.tiles = _.reduce(colors, function(result, color) {
+    this.tiles = _.reduce(this.colors(), function(result, color) {
       result.push({ color: color, selected: false, dismissed: false });
       return result;
     }, []);
+
+    // {
+    //   selected: Boolean,
+    //   dismissed: Boolean,
+    //   color: String
+    // }
 
     this.bindActions(Constants.FLIP_TILE, 'handleFlip');
   },
@@ -52,13 +56,16 @@ module.exports = Fluxxor.createStore({
     return (this.flippedPair[0].color == this.flippedPair[1].color) && (this.flippedPair[0].selected == this.flippedPair[1].selected);
   },
 
+  colors: function() {
+    var colorPalette = randomColor({ count: this.area / 2 });
+    return _.shuffle(colorPalette.concat(colorPalette));
+  },
+
   getState: function() {
     return {
-      tiles: this.tiles,
+      tiles:       this.tiles,
       boardLength: this.boardLength,
-      tileLength: this.tileLength,
-      flippedPair: this.flippedPair,
-      boardArea: this.area
+      tileLength:  this.tileLength
     };
   }
 });

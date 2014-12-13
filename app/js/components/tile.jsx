@@ -21,7 +21,6 @@ var Tile = React.createClass({
 
   componentWillReceiveProps: function(nextProps) {
     if (this.props.selected != nextProps.selected) return;
-    console.log('sss')
     var that = this;
 
     setTimeout(function() {
@@ -31,14 +30,16 @@ var Tile = React.createClass({
 
   flip: function() {
     this.setState({selected: !this.state.selected}, function() {
-      this.getFlux().actions.tiles.flip(this.state.selected, this.props.color);
+      this.getFlux().actions
+                    .tiles
+                    .flip(this.state.selected, this.props.color);
     })
   },
 
   render: function() {
     var styles = {
-      width: this.props.side,
-      height: this.props.side,
+      width:           this.props.side,
+      height:          this.props.side,
       backgroundColor: this.state.selected ? this.props.color : this.props.closedColor
     };
 
