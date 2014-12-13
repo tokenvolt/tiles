@@ -5,7 +5,7 @@ var randomColor     = require('randomcolor');
 
 module.exports = Fluxxor.createStore({
   initialize: function(options) {
-    this.boardLength = 2;
+    this.boardLength = 4;
     this.tileLength  = 120;
     this.area        = this.boardLength * this.boardLength;
     this.flippedPair = [];
